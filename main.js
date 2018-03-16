@@ -15,7 +15,7 @@ class Block{
 	//calculating hash for current block
 	//returns 256 bit hash for the current block
 	calculateHash(){
-		return SHA256(this.index, this.timestamp, JSON.stringify(this.data), this.previousHash).toString();
+		return SHA256(this.index + this.timestamp + JSON.stringify(this.data) + this.previousHash).toString();
 	}
 }
 
@@ -44,3 +44,17 @@ class Blockchain{
 		this.chain.push(newBlock);
 	}
 }
+
+
+/*Testing blockchain*/
+//creating blockchain object
+let altCoin = new Blockchain();
+
+//adding blocks to current blockchain
+altCoin.addBlock(new Block(1,"10/01/2018",{amount: 15}));
+altCoin.addBlock(new Block(2,"15/01/2018",{amount: 25}));
+altCoin.addBlock(new Block(3,"22/01/2018",{amount: 5}));
+altCoin.addBlock(new Block(4,"30/01/2018",{amount: 100}));
+altCoin.addBlock(new Block(5,"8/02/2018",{amount: 50}));
+
+console.log(JSON.stringify(altCoin, null, 4));
