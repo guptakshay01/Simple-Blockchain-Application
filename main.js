@@ -80,3 +80,10 @@ altCoin.addBlock(new Block(5,"8/02/2018",{amount: 50}));
 console.log(JSON.stringify(altCoin, null, 4));
 
 console.log("\nIs blockchain valid? " + altCoin.validateChain());
+
+//trying to alter the third block of the chain
+altCoin.chain[3].data = {amount: 55};
+
+console.log("\nAfter manipulating the 3rd block of the chain");
+
+console.log("\nIs blockchain valid? " + altCoin.validateChain());
