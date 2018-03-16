@@ -3,7 +3,7 @@ const SHA256 = require('crypto-js/sha256');
 /*class to create blocks*/
 class Block{
 	
-	//creating each block
+	//contructor will create each block
 	constructor(index, timestamp, data, previousHash = ''){
 		this.index = index;					//where the block sits on chain
 		this.timestamp = timestamp;			//time of creating the block
@@ -13,8 +13,34 @@ class Block{
 	}
 
 	//calculating hash for current block
-	//it will return 256 bit hash for the current block
+	//returns 256 bit hash for the current block
 	calculateHash(){
 		return SHA256(this.index, this.timestamp, JSON.stringify(this.data), this.previousHash).toString();
+	}
+}
+
+/*class to create blockchain*/
+class Blockchain{
+
+	//contructor to initalize the blockchain
+	constructor(){
+		this.chain = [this.createGenesisBlock()];
+	}
+
+	//method to create first block of the chain
+	createGenesisBlock(){ 
+		return new Block(0,"01/01/2018","Gensis Block","0");
+	}
+
+	//returns last block of the chain
+	getLatestBlock(){
+		return this.chain[this.chain.length - 1];
+	}
+
+	//adds new block to the chain
+	addBlock(newBlock){
+		newBlock.previousHash = this.getLatestBlock().hash;
+		newBlock.hash = newBlock.calculateHash();
+		this.chain.push(newBlock);
 	}
 }
