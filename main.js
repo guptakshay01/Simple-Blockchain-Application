@@ -83,6 +83,7 @@ console.log("\nIs blockchain valid? " + altCoin.validateChain());
 
 //trying to alter the third block of the chain
 altCoin.chain[3].data = {amount: 55};
+altCoin.chain[3].hash = altCoin.chain[3].calculateHash();
 
 console.log("\nAfter manipulating the 3rd block of the chain");
 
