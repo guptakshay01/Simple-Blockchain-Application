@@ -1,4 +1,4 @@
-# Sample-Blockchain-Application
+# Simple-Blockchain-Application
 Created a simple blockchain application using Javascript.
 Used crypto-js library of Javascript to implement SHA256.
 
