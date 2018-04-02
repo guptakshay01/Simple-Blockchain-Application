@@ -2,7 +2,7 @@
 Created a simple blockchain application using Javascript.
 Used crypto-js library of Javascript to implement SHA256.
 
-About Applicatio:
+About Application:
 - Implemented Blockchain using JavaScript to demonstrate and learn how Blockchain works
 - Utilized crypto-js a JavaScript library to implement SHA256 for generating hash code for each block
 - Implemented validation mechanism to check if the block is altered or not
